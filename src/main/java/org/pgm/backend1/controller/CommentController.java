@@ -1,4 +1,4 @@
-package org.pgm.backend1;
+package org.pgm.backend1.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -18,12 +18,12 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/{boardId}")
-    public ResponseEntity<Long> addComment(@PathVariable("boardId") Long board_id,
+    public ResponseEntity<Long> addComment(@PathVariable("boardId") Long boardId,
                                         @RequestBody CommentDTO commentDTO) {
-        Comment comment=commentService.saveComment(board_id, commentDTO);
+        Comment comment=commentService.saveComment(boardId, commentDTO);
         return ResponseEntity.ok(comment.getId());
     }
-    @GetMapping("/{boardId")
+    @GetMapping("/{boardId}")
     public ResponseEntity<List<Comment>> getComments(@PathVariable("boardId") Long boardId) {
         return ResponseEntity.ok(commentService.getComments(boardId));
     }
