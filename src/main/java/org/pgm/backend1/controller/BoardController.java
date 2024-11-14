@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
     @Autowired
     private BoardService boardService;
+
     @GetMapping("/register")
     public void register() {
     }
